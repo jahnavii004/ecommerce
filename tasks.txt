@@ -1,0 +1,15 @@
+TASK 1 : basic server created and checked
+
+TASK 2 : DB to be connected
+        server+ db interaction
+
+TASK 3 : Schema
+
+TASK 4 : add initial data (seed.js) -> array 
+
+TASK 5 : seed
+
+TASK 6 : db me se products show krna h
+
+ 
+
