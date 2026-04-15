@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const seedDB = require('./seed');
-
+const productRoutes = require('./routes/product');
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/shopping-app')
@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname,'public')))   //public folder
 //seeding databse
 // seedDB()        //run one time then comment otherwise multiple times it will be saved in db
 
+app.use(productRoutes); //so that har incoming request ke liye path check kiya jaye
 
 PORT = 8080;
 app.listen(PORT,()=>{
