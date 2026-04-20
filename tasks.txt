@@ -11,5 +11,8 @@ TASK 5 : seed
 
 TASK 6 : db me se products show krna h
 
+TASK 7: CRUD
+
+TASK 8 : REVIEWS
  
 
