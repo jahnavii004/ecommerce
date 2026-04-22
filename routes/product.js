@@ -1,7 +1,8 @@
 const express = require('express');
 //app should not be exported bcoz it is application instance and we cannot have more than one so they are not exported
 const router = express.Router()        //mini instance/server
-const Product = require('../models/Product')
+const Product = require('../models/Product');
+const Review = require('../models/Review');
 
  //to show all the products
 router.get('/products', async(req,res)=>{
@@ -25,7 +26,7 @@ router.post('/products' , async(req,res)=>{
 //to show a particuar product
 router.get('/products/:id',async(req,res)=>{
     let {id} = req.params;
-  let foundProduct = await Product.findById(id);
+  let foundProduct = await Product.findById(id).populate('reviews');  //reviews array ke andr project id h
   res.render('products/show',{foundProduct})
 })
 
@@ -47,6 +48,13 @@ router.patch('/products/:id',async(req,res)=>{
 //to delete a product
 router.delete('/products/:id',async(req,res)=>{
     let {id} = req.params;
+
+    const product = await Product.findById(id);
+    
+    // for(let id of product.reviews){              //deleting reviews
+    //    await Review.findByIdAndDelete(id);  
+    // }
+
    await Product.findByIdAndDelete(id);
    res.redirect('/products');
 })
